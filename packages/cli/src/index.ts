@@ -5,7 +5,7 @@ import pc from 'picocolors'
 import { REGISTRY } from './registry'
 
 const GITHUB_RAW = 'https://raw.githubusercontent.com/danhnguyenthanh260/dei8/master/registry/'
-const VERSION = '0.2.0'
+const VERSION = '0.3.0'
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
