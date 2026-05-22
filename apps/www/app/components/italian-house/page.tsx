@@ -1,7 +1,11 @@
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+import { ComponentMetaSection } from '@/components/component-meta-section'
+import { getBySlug } from '@/lib/registry'
 import { ItalianHousePreview } from './italian-house-preview'
+
+const meta = getBySlug('italian-house')!
 
 const FILES = [
   'svgs/house/italian-house-3d.tsx',
@@ -17,12 +21,14 @@ export default function ItalianHousePage() {
         files={['italian-house-3d.tsx']}
       />
 
+      <ComponentMetaSection meta={meta} />
+
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
+        <p className="text-xs text-(--muted) mb-4">
           Hover over the house for a subtle floating animation.
         </p>
-        <div className="rounded-xl overflow-hidden border border-[var(--border)]">
+        <div className="rounded-xl overflow-hidden border border-(--border)">
           <ItalianHousePreview />
         </div>
       </section>
@@ -34,8 +40,8 @@ export default function ItalianHousePage() {
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
-          Copy the component file into your project. Import <code className="text-[var(--accent)]">ItalianHouse3D</code> and use it.
+        <p className="text-xs text-(--muted) mb-4">
+          Copy the component file into your project. Import <code className="text-(--accent)">ItalianHouse3D</code> and use it.
         </p>
         <CodeBlock code={`import { ItalianHouse3D } from '@/components/italian-house-3d'
 
@@ -43,18 +49,18 @@ export default function ItalianHousePage() {
 <ItalianHouse3D />
 
 // With options
-<ItalianHouse3D 
-  width={480} 
-  height={360} 
-  variant="detailed" 
-  animated 
+<ItalianHouse3D
+  width={480}
+  height={360}
+  variant="detailed"
+  animated
 />`} />
       </section>
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-4">Props</h2>
-        <div className="border border-[var(--border)] rounded-xl overflow-hidden text-xs font-mono">
-          <div className="grid grid-cols-3 px-4 py-2 bg-[var(--surface)] text-[var(--muted)] border-b border-[var(--border)]">
+        <div className="border border-(--border) rounded-xl overflow-hidden text-xs font-mono">
+          <div className="grid grid-cols-3 px-4 py-2 bg-(--surface) text-(--muted) border-b border-(--border)">
             <span>Prop</span><span>Type</span><span>Description</span>
           </div>
           {[
@@ -64,10 +70,10 @@ export default function ItalianHousePage() {
             ['variant', '"simple" | "detailed"', 'Show more or fewer details (default: "detailed")'],
             ['animated', 'boolean', 'Enable hover animation (default: false)'],
           ].map(([p, t, d]) => (
-            <div key={p} className="grid grid-cols-3 px-4 py-2.5 border-b border-[var(--border)] last:border-0 text-[var(--text)]">
-              <span className="text-[var(--accent)]">{p}</span>
-              <span className="text-[var(--muted)]">{t}</span>
-              <span className="text-[var(--muted)]">{d}</span>
+            <div key={p} className="grid grid-cols-3 px-4 py-2.5 border-b border-(--border) last:border-0 text-(--text)">
+              <span className="text-(--accent)">{p}</span>
+              <span className="text-(--muted)">{t}</span>
+              <span className="text-(--muted)">{d}</span>
             </div>
           ))}
         </div>

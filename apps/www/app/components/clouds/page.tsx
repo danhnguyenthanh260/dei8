@@ -3,6 +3,10 @@ import { PreviewFrame } from '@/components/preview-frame'
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+import { ComponentMetaSection } from '@/components/component-meta-section'
+import { getBySlug } from '@/lib/registry'
+
+const meta = getBySlug('clouds')!
 
 export default function CloudsPage() {
   return (
@@ -13,6 +17,8 @@ export default function CloudsPage() {
         description="4 reusable cloud path shapes + multi-layer drifting animation. Fully themeable via accentColor and fillColor props."
         files={['cloud-shapes.ts', 'drifting-clouds.tsx']}
       />
+
+      <ComponentMetaSection meta={meta} />
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-4">Preview</h2>
@@ -34,11 +40,11 @@ export default function CloudsPage() {
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
+        <p className="text-xs text-(--muted) mb-4">
           Copy both files.{' '}
-          <code className="font-mono text-[var(--accent)]">drifting-clouds.tsx</code> imports{' '}
-          <code className="font-mono text-[var(--accent)]">cloud-shapes.ts</code>.
-          Use <code className="font-mono text-[var(--accent)]">cloud-shapes.ts</code> standalone
+          <code className="font-mono text-(--accent)">drifting-clouds.tsx</code> imports{' '}
+          <code className="font-mono text-(--accent)">cloud-shapes.ts</code>.
+          Use <code className="font-mono text-(--accent)">cloud-shapes.ts</code> standalone
           if you only need the path data.
         </p>
         <CodeBlock code={`import { DriftingClouds } from '@/components/drifting-clouds'

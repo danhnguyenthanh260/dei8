@@ -1,6 +1,7 @@
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+import { ComponentMetaSection } from '@/components/component-meta-section'
 import { getBySlug } from '@/lib/registry'
 import { WorldMapPreview } from './world-map-preview'
 
@@ -19,13 +20,15 @@ export default function WorldMapPage() {
         files={meta.files}
       />
 
+      <ComponentMetaSection meta={meta} />
+
       {/* Preview */}
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
+        <p className="text-xs text-(--muted) mb-4">
           Live animated map — glowing droplets travel each route in a continuous loop.
         </p>
-        <div className="rounded-xl overflow-hidden border border-[var(--border)]">
+        <div className="rounded-xl overflow-hidden border border-(--border)">
           <WorldMapPreview />
         </div>
       </section>
@@ -39,8 +42,8 @@ export default function WorldMapPage() {
       {/* Usage */}
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
-          Use <code className="text-[var(--accent)]">latLonToXY</code> to convert real-world
+        <p className="text-xs text-(--muted) mb-4">
+          Use <code className="text-(--accent)">latLonToXY</code> to convert real-world
           coordinates into SVG map positions.
         </p>
         <CodeBlock code={`import { WorldMapSection, latLonToXY } from '@/components/world-map'
@@ -68,9 +71,9 @@ export default function WorldMapPage() {
       {/* latLonToXY helper */}
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">
-          <code className="text-[var(--accent)]">latLonToXY(lat, lon)</code>
+          <code className="text-(--accent)">latLonToXY(lat, lon)</code>
         </h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
+        <p className="text-xs text-(--muted) mb-4">
           Converts geographic coordinates to SVG map positions. Fitted from 10 country centroids — residuals within ±3 SVG units.
         </p>
         <CodeBlock code={`import { latLonToXY } from '@/components/world-map'
@@ -90,7 +93,7 @@ latLonToXY(-33.9, 151.2)  // Sydney      → { x: 624, y: 287 }
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-4">Props</h2>
 
-        <p className="text-xs text-[var(--muted)] mb-2 font-mono">WorldMapSectionProps</p>
+        <p className="text-xs text-(--muted) mb-2 font-mono">WorldMapSectionProps</p>
         <PropsTable rows={[
           ['eyebrow',   'string',           'Panel category label. Default: "Global Network"'],
           ['headline',  'string',           'Panel main heading'],
@@ -100,7 +103,7 @@ latLonToXY(-33.9, 151.2)  // Sydney      → { x: 624, y: 287 }
           ['routes',    'MapRoute[]',       'Animated routes between location ids. Default: 4 sample routes'],
         ]} />
 
-        <p className="text-xs text-[var(--muted)] mt-6 mb-2 font-mono">MapLocation</p>
+        <p className="text-xs text-(--muted) mt-6 mb-2 font-mono">MapLocation</p>
         <PropsTable rows={[
           ['id',            'string',                   'Unique key, referenced in routes'],
           ['name',          'string',                   'City label rendered on map'],
@@ -111,7 +114,7 @@ latLonToXY(-33.9, 151.2)  // Sydney      → { x: 624, y: 287 }
           ['labelAnchor',   '"start"|"end"|"middle"?',  'SVG text-anchor. Default: "start"'],
         ]} />
 
-        <p className="text-xs text-[var(--muted)] mt-6 mb-2 font-mono">MapRoute</p>
+        <p className="text-xs text-(--muted) mt-6 mb-2 font-mono">MapRoute</p>
         <PropsTable rows={[
           ['from',      'string',   'Origin location id'],
           ['to',        'string',   'Destination location id'],
@@ -124,14 +127,14 @@ latLonToXY(-33.9, 151.2)  // Sydney      → { x: 624, y: 287 }
       {/* Source */}
       <section>
         <h2 className="text-sm font-medium text-white mb-1">Source</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
-          <code className="text-[var(--accent)]">world-map-path.ts</code> is ~100 KB of raw SVG
+        <p className="text-xs text-(--muted) mb-4">
+          <code className="text-(--accent)">world-map-path.ts</code> is ~100 KB of raw SVG
           path data —{' '}
           <a
             href="https://github.com/danhnguyenthanh260/dei8/blob/master/registry/svgs/world-map/world-map-path.ts"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[var(--text)] hover:text-white underline underline-offset-2 transition-colors"
+            className="text-(--text) hover:text-white underline underline-offset-2 transition-colors"
           >
             view on GitHub ↗
           </a>
@@ -149,15 +152,15 @@ latLonToXY(-33.9, 151.2)  // Sydney      → { x: 624, y: 287 }
 // ── Shared props table ─────────────────────────────────────────────────────
 function PropsTable({ rows }: { rows: [string, string, string][] }) {
   return (
-    <div className="border border-[var(--border)] rounded-xl overflow-hidden text-xs font-mono">
-      <div className="grid grid-cols-3 px-4 py-2 bg-[var(--surface)] text-[var(--muted)] border-b border-[var(--border)]">
+    <div className="border border-(--border) rounded-xl overflow-hidden text-xs font-mono">
+      <div className="grid grid-cols-3 px-4 py-2 bg-(--surface) text-(--muted) border-b border-(--border)">
         <span>Prop</span><span>Type</span><span>Description</span>
       </div>
       {rows.map(([prop, type, desc]) => (
-        <div key={prop} className="grid grid-cols-3 px-4 py-2.5 border-b border-[var(--border)] last:border-0 text-[var(--text)]">
-          <span className="text-[var(--accent)]">{prop}</span>
-          <span className="text-[var(--muted)]">{type}</span>
-          <span className="text-[var(--muted)]">{desc}</span>
+        <div key={prop} className="grid grid-cols-3 px-4 py-2.5 border-b border-(--border) last:border-0 text-(--text)">
+          <span className="text-(--accent)">{prop}</span>
+          <span className="text-(--muted)">{type}</span>
+          <span className="text-(--muted)">{desc}</span>
         </div>
       ))}
     </div>

@@ -3,6 +3,10 @@ import { PreviewFrame } from '@/components/preview-frame'
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+import { ComponentMetaSection } from '@/components/component-meta-section'
+import { getBySlug } from '@/lib/registry'
+
+const meta = getBySlug('birds')!
 
 export default function BirdsPage() {
   return (
@@ -13,6 +17,8 @@ export default function BirdsPage() {
         description="6 silhouette birds with individual flight paths and wing-flap cycles. Renders as a <g> element — place inside any SVG."
         files={['birds.tsx']}
       />
+
+      <ComponentMetaSection meta={meta} />
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-4">Preview</h2>
@@ -26,10 +32,10 @@ export default function BirdsPage() {
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
-          <code className="font-mono text-[var(--accent)]">Birds</code> renders a{' '}
-          <code className="font-mono text-[var(--accent)]">&lt;g&gt;</code> — wrap it in an SVG and set{' '}
-          <code className="font-mono text-[var(--accent)]">width</code> to match your viewBox.
+        <p className="text-xs text-(--muted) mb-4">
+          <code className="font-mono text-(--accent)">Birds</code> renders a{' '}
+          <code className="font-mono text-(--accent)">&lt;g&gt;</code> — wrap it in an SVG and set{' '}
+          <code className="font-mono text-(--accent)">width</code> to match your viewBox.
         </p>
         <CodeBlock code={`import { Birds } from '@/components/birds'
 

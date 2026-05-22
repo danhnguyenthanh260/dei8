@@ -3,6 +3,10 @@ import { PreviewFrame } from '@/components/preview-frame'
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+import { ComponentMetaSection } from '@/components/component-meta-section'
+import { getBySlug } from '@/lib/registry'
+
+const meta = getBySlug('package-box')!
 
 const FILES = [
   'svgs/package-box/cargo-package.tsx',
@@ -19,9 +23,11 @@ export default function PackageBoxPage() {
         files={FILES.map((f) => f.split('/').pop()!)}
       />
 
+      <ComponentMetaSection meta={meta} />
+
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">Click the box to open / close.</p>
+        <p className="text-xs text-(--muted) mb-4">Click the box to open / close.</p>
         <PreviewFrame>
           <CargoPackage className="w-64 h-36 overflow-visible cursor-pointer select-none" />
         </PreviewFrame>
@@ -29,9 +35,9 @@ export default function PackageBoxPage() {
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
-          Copy both files below — <code className="font-mono text-[var(--accent)]">cargo-package.tsx</code> imports{' '}
-          <code className="font-mono text-[var(--accent)]">cargo-package-bg.tsx</code> directly.
+        <p className="text-xs text-(--muted) mb-4">
+          Copy both files below — <code className="font-mono text-(--accent)">cargo-package.tsx</code> imports{' '}
+          <code className="font-mono text-(--accent)">cargo-package-bg.tsx</code> directly.
         </p>
         <CodeBlock code={`import { CargoPackage } from '@/components/cargo-package'
 

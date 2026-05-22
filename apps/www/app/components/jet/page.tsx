@@ -3,6 +3,10 @@ import { PreviewFrame } from '@/components/preview-frame'
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+import { ComponentMetaSection } from '@/components/component-meta-section'
+import { getBySlug } from '@/lib/registry'
+
+const meta = getBySlug('jet')!
 
 const FILES = [
   'svgs/jet/jet.tsx',
@@ -21,9 +25,11 @@ export default function JetPage() {
         files={FILES.map((f) => f.split('/').pop()!)}
       />
 
+      <ComponentMetaSection meta={meta} />
+
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">Click the jet to launch.</p>
+        <p className="text-xs text-(--muted) mb-4">Click the jet to launch.</p>
         <PreviewFrame>
           <CargoJet className="w-72 h-40 overflow-visible cursor-pointer select-none" />
         </PreviewFrame>
@@ -31,7 +37,7 @@ export default function JetPage() {
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-[var(--muted)] mb-4">
+        <p className="text-xs text-(--muted) mb-4">
           Copy all 4 files into the same folder — they import each other relatively.
         </p>
         <CodeBlock code={`import { CargoJet } from '@/components/jet/jet'
@@ -44,8 +50,8 @@ export default function JetPage() {
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-4">Animation phases</h2>
-        <div className="border border-[var(--border)] rounded-xl overflow-hidden text-xs font-mono">
-          <div className="grid grid-cols-2 px-4 py-2 bg-[var(--surface)] text-[var(--muted)] border-b border-[var(--border)]">
+        <div className="border border-(--border) rounded-xl overflow-hidden text-xs font-mono">
+          <div className="grid grid-cols-2 px-4 py-2 bg-(--surface) text-(--muted) border-b border-(--border)">
             <span>State</span><span>Duration</span>
           </div>
           {[
@@ -55,8 +61,8 @@ export default function JetPage() {
             ['prepare-return', '80 ms — teleport (invisible)'],
             ['returning',      '1900 ms — glide in from behind cloud'],
           ].map(([s, d]) => (
-            <div key={s} className="grid grid-cols-2 px-4 py-2.5 border-b border-[var(--border)] last:border-0 text-[var(--text)]">
-              <span>{s}</span><span className="text-[var(--muted)]">{d}</span>
+            <div key={s} className="grid grid-cols-2 px-4 py-2.5 border-b border-(--border) last:border-0 text-(--text)">
+              <span>{s}</span><span className="text-(--muted)">{d}</span>
             </div>
           ))}
         </div>
