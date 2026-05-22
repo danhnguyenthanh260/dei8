@@ -62,9 +62,10 @@ export function FlightJourneySection({ nodes, ariaLabel = 'Animated flight journ
   useEffect(() => {
     const path = pathRef.current
     if (!path) return
+    const activePath = path  // alias: TypeScript doesn't narrow refs inside closures
 
     setIsStationary(false)
-    const totalLength = path.getTotalLength()
+    const totalLength = activePath.getTotalLength()
     const startProgress = progressRef.current
     const targetProgress = nodes[activeIndex]?.progress ?? 0
     const dir = targetProgress >= startProgress ? 1 : -1
@@ -99,10 +100,10 @@ export function FlightJourneySection({ nodes, ariaLabel = 'Animated flight journ
         setActiveCloudNode(nearNode)
       }
 
-      const pt = path.getPointAtLength(cp * totalLength)
+      const pt = activePath.getPointAtLength(cp * totalLength)
       const d = 0.004
-      const p1 = path.getPointAtLength(Math.max(0, Math.min(1, cp - d)) * totalLength)
-      const p2 = path.getPointAtLength(Math.max(0, Math.min(1, cp + d)) * totalLength)
+      const p1 = activePath.getPointAtLength(Math.max(0, Math.min(1, cp - d)) * totalLength)
+      const p2 = activePath.getPointAtLength(Math.max(0, Math.min(1, cp + d)) * totalLength)
       let angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI)
 
       const pMid = 0.5
