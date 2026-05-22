@@ -1,0 +1,26 @@
+{
+  "name": "dei8",
+  "version": "0.1.0",
+  "description": "Add animated SVG components to your project",
+  "keywords": ["svg", "animation", "ui", "components", "react"],
+  "license": "MIT",
+  "bin": {
+    "dei8": "./bin/dei8.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
