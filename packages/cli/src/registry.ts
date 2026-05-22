@@ -82,6 +82,15 @@ export const REGISTRY: Record<string, RegistryEntry> = {
     files: ['svgs/clouds/cloud-shapes.ts'],
   },
 
+  // ── World map ─────────────────────────────────────────────────────────────
+  'world-map': {
+    description: 'Animated world map with glowing flight routes — configurable locations, routes, stats, panel text',
+    files: [
+      'svgs/world-map/world-map.tsx',
+      'svgs/world-map/world-map-path.ts',
+    ],
+  },
+
   // ── Flight journey ────────────────────────────────────────────────────────
   'flight-journey': {
     description: 'Full animated flight journey section — day/night sky, aircraft, clouds, birds, sun',
