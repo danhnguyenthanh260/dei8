@@ -81,4 +81,29 @@ export const REGISTRY: Record<string, RegistryEntry> = {
     description: '4 reusable SVG cloud path shapes (data only, no React)',
     files: ['svgs/clouds/cloud-shapes.ts'],
   },
+
+  // ── Flight journey ────────────────────────────────────────────────────────
+  'flight-journey': {
+    description: 'Full animated flight journey section — day/night sky, aircraft, clouds, birds, sun',
+    files: [
+      'svgs/flight/flight-journey.tsx',
+      'svgs/flight/flight-visual-panel.tsx',
+      'svgs/flight/flight-clouds.tsx',
+      'svgs/flight/flight-clouds-extra.tsx',
+      'svgs/flight/flight-birds.tsx',
+      'svgs/flight/flight-plants.tsx',
+      'svgs/flight/flight-sky-decor.tsx',
+      'svgs/flight/flight-svg-defs.tsx',
+      'svgs/flight/cloud-wisps.tsx',
+      'svgs/flight/aircraft-image.tsx',
+      'svgs/flight/flight-constants.ts',
+      'svgs/flight/flight-utils.ts',
+      'svgs/airplane/airplane-side.tsx',
+      'svgs/airplane/airplane-side-reverse.tsx',
+      'svgs/airplane/airplane-headon.tsx',
+      'svgs/airplane/airplane-trans-left.tsx',
+      'svgs/airplane/airplane-quarter-right.tsx',
+      'svgs/airplane/airplane-quarter-left.tsx',
+    ],
+  },
 }

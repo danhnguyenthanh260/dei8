@@ -1,11 +1,17 @@
 {
-  "name": "dei8",
-  "version": "0.1.0",
+  "name": "@dei8withnpm/dei8",
+  "version": "0.2.0",
   "description": "Add animated SVG components to your project",
-  "keywords": ["svg", "animation", "ui", "components", "react"],
+  "keywords": [
+    "svg",
+    "animation",
+    "ui",
+    "components",
+    "react"
+  ],
   "license": "MIT",
   "bin": {
-    "dei8": "./bin/dei8.js"
+    "dei8": "bin/dei8.js"
   },
   "main": "./dist/index.js",
   "files": [
