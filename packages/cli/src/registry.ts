@@ -115,4 +115,10 @@ export const REGISTRY: Record<string, RegistryEntry> = {
       'svgs/airplane/airplane-quarter-left.tsx',
     ],
   },
+
+  // ── Italian House 3D ──────────────────────────────────────────────────────
+  'italian-house': {
+    description: 'Charming 3D-style Italian two-floor house with terracotta roof, stucco walls, green shutters, and decorative details',
+    files: ['svgs/house/italian-house-3d.tsx'],
+  },
 }

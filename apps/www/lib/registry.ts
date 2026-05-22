@@ -73,6 +73,16 @@ export const COMPONENT_REGISTRY: ComponentMeta[] = [
     description: 'Animated world map with glowing flight routes. Configurable locations, routes, stats, panel text.',
     files: ['world-map.tsx', 'world-map-path.ts'],
   },
+
+  // ── Italian House ─────────────────────────────────────────────────────────
+  {
+    slug: 'italian-house',
+    name: 'Italian House',
+    type: 'SVG · Animated',
+    category: 'animated',
+    description: 'Charming 3D-style Italian two-floor house with terracotta roof, stucco walls, green shutters, and flower pots.',
+    files: ['italian-house-3d.tsx'],
+  },
 ]
 
 export const CATEGORIES: { key: ComponentCategory; label: string; description: string }[] = [
