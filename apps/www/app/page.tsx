@@ -36,6 +36,13 @@ const COMPONENTS = [
     description: '4 cloud shapes + multi-layer drifting animation. Themeable colors.',
     files: ['cloud-shapes.ts', 'drifting-clouds.tsx'],
   },
+  {
+    slug: 'flight',
+    type: 'Section · Animated',
+    name: 'Flight Journey',
+    description: 'Full hero section — aircraft on flight path, day/night sky, fog clouds, constellation, birds, sun rise, grass.',
+    files: ['flight-journey.tsx', '+ 17 files'],
+  },
 ]
 
 export default function Home() {
