@@ -1,7 +1,15 @@
 import { CargoJet } from '@registry/svgs/jet/jet'
 import { PreviewFrame } from '@/components/preview-frame'
+import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+
+const FILES = [
+  'svgs/jet/jet.tsx',
+  'svgs/jet/jet-defs.tsx',
+  'svgs/jet/jet-clouds.tsx',
+  'svgs/jet/jet-styles.ts',
+]
 
 export default function JetPage() {
   return (
@@ -10,23 +18,23 @@ export default function JetPage() {
         type="SVG · Animated"
         name="Jet"
         description="Night-sky scene with 3D jet airliner. Click to launch — 4-phase animation: engine spool-up → fly-out with shockwave → teleport → glide return through clouds."
-        files={['jet.tsx', 'jet-defs.tsx', 'jet-clouds.tsx', 'jet-styles.ts']}
+        files={FILES.map((f) => f.split('/').pop()!)}
       />
 
       <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-4">Preview</h2>
-        <p className="text-xs text-[var(--muted)] mb-3">Click the jet to launch.</p>
+        <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
+        <p className="text-xs text-[var(--muted)] mb-4">Click the jet to launch.</p>
         <PreviewFrame>
           <CargoJet className="w-72 h-40 overflow-visible cursor-pointer select-none" />
         </PreviewFrame>
       </section>
 
       <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-4">Usage</h2>
-        <CodeBlock code={`// Copy all 4 files into the same folder:
-// jet.tsx  jet-defs.tsx  jet-clouds.tsx  jet-styles.ts
-
-import { CargoJet } from '@/components/jet/jet'
+        <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
+        <p className="text-xs text-[var(--muted)] mb-4">
+          Copy all 4 files into the same folder — they import each other relatively.
+        </p>
+        <CodeBlock code={`import { CargoJet } from '@/components/jet/jet'
 
 <CargoJet />
 
@@ -55,14 +63,11 @@ import { CargoJet } from '@/components/jet/jet'
       </section>
 
       <section>
-        <h2 className="text-sm font-medium text-white mb-4">Props</h2>
-        <div className="border border-[var(--border)] rounded-xl overflow-hidden text-xs font-mono">
-          <div className="grid grid-cols-3 px-4 py-2 bg-[var(--surface)] text-[var(--muted)] border-b border-[var(--border)]">
-            <span>Prop</span><span>Type</span><span>Default</span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3 text-[var(--text)]">
-            <span>className</span><span className="text-[var(--muted)]">string?</span><span className="text-[var(--muted)]">'w-44 h-24 overflow-visible cursor-pointer select-none'</span>
-          </div>
+        <h2 className="text-sm font-medium text-white mb-4">Files — copy all 4</h2>
+        <div className="flex flex-col gap-3">
+          {FILES.map((f) => (
+            <SourceViewer key={f} file={f} />
+          ))}
         </div>
       </section>
     </div>

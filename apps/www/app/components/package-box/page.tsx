@@ -1,7 +1,13 @@
 import { CargoPackage } from '@registry/svgs/package-box/cargo-package'
 import { PreviewFrame } from '@/components/preview-frame'
+import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
+
+const FILES = [
+  'svgs/package-box/cargo-package.tsx',
+  'svgs/package-box/cargo-package-bg.tsx',
+]
 
 export default function PackageBoxPage() {
   return (
@@ -9,25 +15,25 @@ export default function PackageBoxPage() {
       <PageHeader
         type="SVG · Animated"
         name="Package Box"
-        description="3D isometric kraft cardboard box. Click to trigger the butterfly-flap open animation — tape cut effect, flap rotation, inner light beam. Click again to close."
-        files={['cargo-package.tsx', 'cargo-package-bg.tsx']}
+        description="3D isometric kraft cardboard box. Click to trigger the butterfly-flap open animation — tape cut, flap rotation, light beam. Click again to close."
+        files={FILES.map((f) => f.split('/').pop()!)}
       />
 
       <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-4">Preview</h2>
-        <p className="text-xs text-[var(--muted)] mb-3">Click the box to open / close.</p>
+        <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
+        <p className="text-xs text-[var(--muted)] mb-4">Click the box to open / close.</p>
         <PreviewFrame>
           <CargoPackage className="w-64 h-36 overflow-visible cursor-pointer select-none" />
         </PreviewFrame>
       </section>
 
       <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-4">Usage</h2>
-        <CodeBlock code={`// Copy both files into your project:
-// cargo-package.tsx
-// cargo-package-bg.tsx  (imported by cargo-package)
-
-import { CargoPackage } from '@/components/cargo-package'
+        <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
+        <p className="text-xs text-[var(--muted)] mb-4">
+          Copy both files below — <code className="font-mono text-[var(--accent)]">cargo-package.tsx</code> imports{' '}
+          <code className="font-mono text-[var(--accent)]">cargo-package-bg.tsx</code> directly.
+        </p>
+        <CodeBlock code={`import { CargoPackage } from '@/components/cargo-package'
 
 <CargoPackage />
 
@@ -36,14 +42,11 @@ import { CargoPackage } from '@/components/cargo-package'
       </section>
 
       <section>
-        <h2 className="text-sm font-medium text-white mb-4">Props</h2>
-        <div className="border border-[var(--border)] rounded-xl overflow-hidden text-xs font-mono">
-          <div className="grid grid-cols-3 px-4 py-2 bg-[var(--surface)] text-[var(--muted)] border-b border-[var(--border)]">
-            <span>Prop</span><span>Type</span><span>Default</span>
-          </div>
-          <div className="grid grid-cols-3 px-4 py-3 text-[var(--text)]">
-            <span>className</span><span className="text-[var(--muted)]">string?</span><span className="text-[var(--muted)]">'w-44 h-24 overflow-visible cursor-pointer select-none'</span>
-          </div>
+        <h2 className="text-sm font-medium text-white mb-4">Files — copy both</h2>
+        <div className="flex flex-col gap-3">
+          {FILES.map((f) => (
+            <SourceViewer key={f} file={f} />
+          ))}
         </div>
       </section>
     </div>

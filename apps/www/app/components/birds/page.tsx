@@ -1,5 +1,6 @@
 import { Birds } from '@registry/svgs/birds/birds'
 import { PreviewFrame } from '@/components/preview-frame'
+import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
 import { PageHeader } from '@/components/page-header'
 
@@ -9,7 +10,7 @@ export default function BirdsPage() {
       <PageHeader
         type="SVG · Animated"
         name="Birds"
-        description="6 silhouette birds with individual flight paths and wing-flap cycles. Each bird has unique speed, altitude, delay, and scale."
+        description="6 silhouette birds with individual flight paths and wing-flap cycles. Renders as a <g> element — place inside any SVG."
         files={['birds.tsx']}
       />
 
@@ -24,10 +25,14 @@ export default function BirdsPage() {
       </section>
 
       <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-4">Usage</h2>
+        <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
+        <p className="text-xs text-[var(--muted)] mb-4">
+          <code className="font-mono text-[var(--accent)]">Birds</code> renders a{' '}
+          <code className="font-mono text-[var(--accent)]">&lt;g&gt;</code> — wrap it in an SVG and set{' '}
+          <code className="font-mono text-[var(--accent)]">width</code> to match your viewBox.
+        </p>
         <CodeBlock code={`import { Birds } from '@/components/birds'
 
-// Inside an SVG:
 <svg viewBox="0 0 300 160" className="w-full">
   <Birds width={300} />
 </svg>
@@ -39,20 +44,8 @@ export default function BirdsPage() {
       </section>
 
       <section>
-        <h2 className="text-sm font-medium text-white mb-4">Props</h2>
-        <div className="border border-[var(--border)] rounded-xl overflow-hidden text-xs font-mono">
-          <div className="grid grid-cols-3 px-4 py-2 bg-[var(--surface)] text-[var(--muted)] border-b border-[var(--border)]">
-            <span>Prop</span><span>Type</span><span>Default</span>
-          </div>
-          {[
-            ['color', 'string?', "'rgba(45, 38, 25, 0.72)'"],
-            ['width', 'number?', '300'],
-          ].map(([p, t, d]) => (
-            <div key={p} className="grid grid-cols-3 px-4 py-2.5 border-b border-[var(--border)] last:border-0 text-[var(--text)]">
-              <span>{p}</span><span className="text-[var(--muted)]">{t}</span><span className="text-[var(--muted)]">{d}</span>
-            </div>
-          ))}
-        </div>
+        <h2 className="text-sm font-medium text-white mb-4">File</h2>
+        <SourceViewer file="svgs/birds/birds.tsx" />
       </section>
     </div>
   )
