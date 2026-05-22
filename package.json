@@ -1,0 +1,11 @@
+{
+  "name": "dei8",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/www",
+    "build": "npm run build --workspace=apps/www"
+  }
+}
