@@ -4,6 +4,7 @@ import { AirplaneHeadon } from '@registry/svgs/airplane/airplane-headon'
 import { AirplaneQuarterLeft } from '@registry/svgs/airplane/airplane-quarter-left'
 import { AirplaneQuarterRight } from '@registry/svgs/airplane/airplane-quarter-right'
 import { AirplaneTransLeft } from '@registry/svgs/airplane/airplane-trans-left'
+import { AirplaneModel, AirplaneView } from '@registry/svgs/airplane/airplane-model'
 import { PreviewFrame } from '@/components/preview-frame'
 import { SourceViewer } from '@/components/source-viewer'
 import { CodeBlock } from '@/components/code-block'
@@ -13,13 +14,25 @@ import { getBySlug } from '@/lib/registry'
 
 const meta = getBySlug('airplane')!
 
-const VARIANTS = [
+const LEGACY_VARIANTS = [
   { label: 'airplane-side',          el: <AirplaneSide className="w-36 h-16 overflow-visible" /> },
   { label: 'airplane-side-reverse',  el: <AirplaneSideReverse className="w-36 h-16 overflow-visible" /> },
   { label: 'airplane-headon',        el: <AirplaneHeadon className="w-36 h-16 overflow-visible" /> },
   { label: 'airplane-quarter-left',  el: <AirplaneQuarterLeft className="w-36 h-16 overflow-visible" /> },
   { label: 'airplane-quarter-right', el: <AirplaneQuarterRight className="w-36 h-16 overflow-visible" /> },
   { label: 'airplane-trans-left',    el: <AirplaneTransLeft className="w-36 h-16 overflow-visible" /> },
+]
+
+const LEVEL_RING_VIEWS: AirplaneView[] = [
+  'front', 'front-right', 'right', 'rear-right', 'rear', 'rear-left', 'left', 'front-left'
+]
+
+const TOP_RING_VIEWS: AirplaneView[] = [
+  'top-front', 'top-front-right', 'top-right', 'top-rear-right', 'top-rear', 'top-rear-left', 'top-left', 'top-front-left'
+]
+
+const MOTION_VIEWS: AirplaneView[] = [
+  'bank-left', 'bank-right', 'climb-left', 'climb-right', 'descent-left', 'descent-right'
 ]
 
 const FILES = [
@@ -37,24 +50,57 @@ export default function AirplanePage() {
       <PageHeader
         type="SVG"
         name="Airplane"
-        description="6-angle premium airplane SVG. Metallic gradients, gold brand stripe, cockpit glass, navigation beacon."
+        description="360° View Atlas — a unified mathematical 3D geometry rendered in discrete SVG angles."
         files={FILES.map((f) => f.split('/').pop()!)}
       />
 
       <ComponentMetaSection meta={meta} />
 
       <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-4">Preview</h2>
+        <h2 className="text-sm font-medium text-white mb-4">Legacy Wrappers (Backward Compatible)</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {VARIANTS.map((v) => (
+          {LEGACY_VARIANTS.map((v) => (
             <PreviewFrame key={v.label} label={v.label}>{v.el}</PreviewFrame>
           ))}
         </div>
       </section>
 
       <section className="mb-10">
+        <h2 className="text-sm font-medium text-white mb-4">360° Level Ring</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {LEVEL_RING_VIEWS.map((view) => (
+            <PreviewFrame key={view} label={view}>
+              <AirplaneModel view={view} className="w-36 h-16 overflow-visible" />
+            </PreviewFrame>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-sm font-medium text-white mb-4">Top 3D Ring (Phase 2 Stub)</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {TOP_RING_VIEWS.map((view) => (
+            <PreviewFrame key={view} label={view}>
+              <AirplaneModel view={view} className="w-36 h-16 overflow-visible" />
+            </PreviewFrame>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-sm font-medium text-white mb-4">Motion Variants</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {MOTION_VIEWS.map((view) => (
+            <PreviewFrame key={view} label={view}>
+              <AirplaneModel view={view} className="w-36 h-16 overflow-visible" />
+            </PreviewFrame>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Usage</h2>
-        <p className="text-xs text-(--muted) mb-4">
+        <p className="text-xs text-[#9CA3AF] mb-4">
           Copy the file you need (see below) into your project, then import it.
         </p>
         <CodeBlock code={`import { AirplaneSide } from '@/components/airplane-side'

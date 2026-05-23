@@ -12,26 +12,23 @@ const SOURCE_FILES = ['svgs/world-map/world-map.tsx']
 
 export default function WorldMapPage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <PageHeader
-        type={meta.type}
-        name={meta.name}
-        description={meta.description}
-        files={meta.files}
-      />
+    <div>
+      {/* Full-width live preview */}
+      <WorldMapPreview />
 
-      <ComponentMetaSection meta={meta} />
-
-      {/* Preview */}
-      <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-(--muted) mb-4">
-          Live animated map — glowing droplets travel each route in a continuous loop.
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-(--muted) mb-6">
+          Live animated map — glowing droplets travel each route in a continuous loop
         </p>
-        <div className="rounded-xl overflow-hidden border border-(--border)">
-          <WorldMapPreview />
-        </div>
-      </section>
+
+        <PageHeader
+          type={meta.type}
+          name={meta.name}
+          description={meta.description}
+          files={meta.files}
+        />
+
+        <ComponentMetaSection meta={meta} />
 
       {/* Install */}
       <section className="mb-10">
@@ -145,6 +142,7 @@ latLonToXY(-33.9, 151.2)  // Sydney      → { x: 624, y: 287 }
           ))}
         </div>
       </section>
+      </div>
     </div>
   )
 }
