@@ -30,25 +30,23 @@ const FILES = [
 
 export default function FlightPage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <PageHeader
-        type="Section · Animated"
-        name="Flight Journey"
-        description="Full-width hero section with animated flight path. Aircraft flies between 5 interactive nodes — day/night sky transition, fog clouds, Gemini constellation, birds, sun rise, and swaying grass. Pass your own nodes as props."
-        files={['flight-journey.tsx', '+ 17 supporting files']}
-      />
+    <div>
+      {/* Full-width live preview */}
+      <FlightPreview />
 
-      <ComponentMetaSection meta={meta} />
-
-      <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-(--muted) mb-4">
-          Click any node dot or use the tab strip below. Hover over fog clouds to reveal labels.
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-(--muted) mb-6">
+          Click any node dot · Use tab strip below · Hover fog clouds to reveal labels
         </p>
-        <div className="rounded-xl overflow-hidden border border-(--border)">
-          <FlightPreview />
-        </div>
-      </section>
+
+        <PageHeader
+          type="Section · Animated"
+          name="Flight Journey"
+          description="Full-width hero section with animated flight path. Aircraft flies between 5 interactive nodes — day/night sky transition, fog clouds, Gemini constellation, birds, sun rise, and swaying grass. Pass your own nodes as props."
+          files={['flight-journey.tsx', '+ 17 supporting files']}
+        />
+
+        <ComponentMetaSection meta={meta} />
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Install</h2>
@@ -141,6 +139,7 @@ const nodes = [
           ))}
         </div>
       </section>
+      </div>
     </div>
   )
 }

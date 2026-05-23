@@ -20,25 +20,23 @@ const FILES = [
 
 export default function AudiencePage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <PageHeader
-        type="Section · Animated"
-        name="Audience Section"
-        description="Full-width audience spotlight section with an animated Jet and Package flanking the heading, and 4 symmetrical corner-badge cards. Pass your own cards with optional background images."
-        files={['audience-section.tsx', 'audience-bg.tsx', '+ 6 supporting files']}
-      />
+    <div>
+      {/* Full-width live preview */}
+      <AudienceSection />
 
-      <ComponentMetaSection meta={meta} />
-
-      <section className="mb-10">
-        <h2 className="text-sm font-medium text-white mb-2">Preview</h2>
-        <p className="text-xs text-(--muted) mb-4">
-          Click the jet (left) to trigger the launch animation. Click the package (right) to open it.
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-(--muted) mb-6">
+          Click the jet to launch · Click the package to open
         </p>
-        <div className="rounded-xl overflow-hidden border border-(--border)">
-          <AudienceSection />
-        </div>
-      </section>
+
+        <PageHeader
+          type="Section · Animated"
+          name="Audience Section"
+          description="Full-width audience spotlight section with an animated Jet and Package flanking the heading, and 4 symmetrical corner-badge cards. Pass your own cards with optional background images."
+          files={['audience-section.tsx', 'audience-bg.tsx', '+ 6 supporting files']}
+        />
+
+        <ComponentMetaSection meta={meta} />
 
       <section className="mb-10">
         <h2 className="text-sm font-medium text-white mb-2">Install</h2>
@@ -131,6 +129,7 @@ export default function AudiencePage() {
           ))}
         </div>
       </section>
+      </div>
     </div>
   )
 }
