@@ -166,6 +166,28 @@ export const COMPONENT_REGISTRY: ComponentMeta[] = [
     related: ['airplane', 'flight', 'package-box'],
   },
 
+  // ── Audience Section ──────────────────────────────────────────────────────
+  {
+    slug: 'audience',
+    name: 'Audience Section',
+    type: 'Section · Animated',
+    category: 'section',
+    description: 'Audience spotlight section — animated Jet & Package flanking the heading, 4 symmetrical corner-badge cards with optional image backgrounds.',
+    files: ['audience-section.tsx', 'audience-bg.tsx', '+ 6 files'],
+    story:
+      'A full-width audience section with an animated cargo jet on the left and an openable package on the right flanking a gold-accented heading. Four staggered cards with asymmetric corner badges showcase key stats or audience segments — gold and dark lanes run behind the grid.',
+    useCases: [
+      'logistics company homepage',
+      'social proof section',
+      'service audience overview',
+      'stats & milestones block',
+      'customer segment showcase',
+      'brand credibility section',
+    ],
+    mood: ['professional', 'bold', 'trustworthy', 'premium', 'logistics', 'global'],
+    related: ['jet', 'package-box', 'world-map'],
+  },
+
   // ── Italian House ─────────────────────────────────────────────────────────
   {
     slug: 'italian-house',
